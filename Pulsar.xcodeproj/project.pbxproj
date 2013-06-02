@@ -14,6 +14,7 @@
 		A996D985175B59A900010719 /* MEDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D984175B59A900010719 /* MEDocument.m */; };
 		A996D988175B59A900010719 /* MEDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = A996D986175B59A900010719 /* MEDocument.xib */; };
 		A996D98B175B59A900010719 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A996D989175B59A900010719 /* MainMenu.xib */; };
+		A996D992175B5D1600010719 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A996D991175B5D1600010719 /* Sparkle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		A996D984175B59A900010719 /* MEDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEDocument.m; sourceTree = "<group>"; };
 		A996D987175B59A900010719 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MEDocument.xib; sourceTree = "<group>"; };
 		A996D98A175B59A900010719 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A996D991175B5D1600010719 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A996D972175B59A900010719 /* Cocoa.framework in Frameworks */,
+				A996D992175B5D1600010719 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +68,7 @@
 		A996D970175B59A900010719 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A996D991175B5D1600010719 /* Sparkle.framework */,
 				A996D971175B59A900010719 /* Cocoa.framework */,
 				A996D973175B59A900010719 /* Other Frameworks */,
 			);
@@ -241,7 +245,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -268,7 +272,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -277,6 +281,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pulsar/Pulsar-Prefix.pch";
 				INFOPLIST_FILE = "Pulsar/Pulsar-Info.plist";
@@ -289,6 +297,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pulsar/Pulsar-Prefix.pch";
 				INFOPLIST_FILE = "Pulsar/Pulsar-Info.plist";

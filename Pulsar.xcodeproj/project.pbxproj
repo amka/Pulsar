@@ -23,6 +23,7 @@
 		A996D9BE175B64FB00010719 /* NSView+CNSplitViewToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D9B8175B64FB00010719 /* NSView+CNSplitViewToolbar.m */; };
 		A996D9C1175B651700010719 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A996D9BF175B650E00010719 /* QuartzCore.framework */; };
 		A996D9C4175B65C000010719 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A996D991175B5D1600010719 /* Sparkle.framework */; };
+		A996D9C7175B688E00010719 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D9C6175B688E00010719 /* AppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,6 +70,8 @@
 		A996D9B7175B64FB00010719 /* NSView+CNSplitViewToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+CNSplitViewToolbar.h"; sourceTree = "<group>"; };
 		A996D9B8175B64FB00010719 /* NSView+CNSplitViewToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+CNSplitViewToolbar.m"; sourceTree = "<group>"; };
 		A996D9BF175B650E00010719 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A996D9C5175B688E00010719 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		A996D9C6175B688E00010719 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 			children = (
 				A996D983175B59A900010719 /* MEDocument.h */,
 				A996D984175B59A900010719 /* MEDocument.m */,
+				A996D9C5175B688E00010719 /* AppController.h */,
+				A996D9C6175B688E00010719 /* AppController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				A996D9BC175B64FB00010719 /* CNSplitViewToolbarButton.m in Sources */,
 				A996D9BD175B64FB00010719 /* CNSplitViewToolbarButtonCell.m in Sources */,
 				A996D9BE175B64FB00010719 /* NSView+CNSplitViewToolbar.m in Sources */,
+				A996D9C7175B688E00010719 /* AppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

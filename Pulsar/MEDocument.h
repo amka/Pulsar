@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class CNSplitView;
+
 @interface MEDocument : NSDocument
+
+@property (weak) IBOutlet CNSplitView *splitView;
 
 @end

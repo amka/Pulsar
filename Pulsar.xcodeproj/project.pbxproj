@@ -15,7 +15,28 @@
 		A996D988175B59A900010719 /* MEDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = A996D986175B59A900010719 /* MEDocument.xib */; };
 		A996D98B175B59A900010719 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A996D989175B59A900010719 /* MainMenu.xib */; };
 		A996D992175B5D1600010719 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A996D991175B5D1600010719 /* Sparkle.framework */; };
+		A996D9B9175B64FB00010719 /* CNSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D9AC175B64FB00010719 /* CNSplitView.m */; };
+		A996D9BA175B64FB00010719 /* CNSplitViewDraggingHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D9AF175B64FB00010719 /* CNSplitViewDraggingHandle.m */; };
+		A996D9BB175B64FB00010719 /* CNSplitViewToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D9B1175B64FB00010719 /* CNSplitViewToolbar.m */; };
+		A996D9BC175B64FB00010719 /* CNSplitViewToolbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D9B3175B64FB00010719 /* CNSplitViewToolbarButton.m */; };
+		A996D9BD175B64FB00010719 /* CNSplitViewToolbarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D9B5175B64FB00010719 /* CNSplitViewToolbarButtonCell.m */; };
+		A996D9BE175B64FB00010719 /* NSView+CNSplitViewToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = A996D9B8175B64FB00010719 /* NSView+CNSplitViewToolbar.m */; };
+		A996D9C1175B651700010719 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A996D9BF175B650E00010719 /* QuartzCore.framework */; };
+		A996D9C4175B65C000010719 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A996D991175B5D1600010719 /* Sparkle.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A996D9C3175B657300010719 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A996D9C4175B65C000010719 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A996D96E175B59A900010719 /* Pulsar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulsar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,6 +54,21 @@
 		A996D987175B59A900010719 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MEDocument.xib; sourceTree = "<group>"; };
 		A996D98A175B59A900010719 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A996D991175B5D1600010719 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		A996D9AB175B64FB00010719 /* CNSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSplitView.h; sourceTree = "<group>"; };
+		A996D9AC175B64FB00010719 /* CNSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNSplitView.m; sourceTree = "<group>"; };
+		A996D9AD175B64FB00010719 /* CNSplitViewDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSplitViewDefinitions.h; sourceTree = "<group>"; };
+		A996D9AE175B64FB00010719 /* CNSplitViewDraggingHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSplitViewDraggingHandle.h; sourceTree = "<group>"; };
+		A996D9AF175B64FB00010719 /* CNSplitViewDraggingHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNSplitViewDraggingHandle.m; sourceTree = "<group>"; };
+		A996D9B0175B64FB00010719 /* CNSplitViewToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSplitViewToolbar.h; sourceTree = "<group>"; };
+		A996D9B1175B64FB00010719 /* CNSplitViewToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNSplitViewToolbar.m; sourceTree = "<group>"; };
+		A996D9B2175B64FB00010719 /* CNSplitViewToolbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSplitViewToolbarButton.h; sourceTree = "<group>"; };
+		A996D9B3175B64FB00010719 /* CNSplitViewToolbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNSplitViewToolbarButton.m; sourceTree = "<group>"; };
+		A996D9B4175B64FB00010719 /* CNSplitViewToolbarButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSplitViewToolbarButtonCell.h; sourceTree = "<group>"; };
+		A996D9B5175B64FB00010719 /* CNSplitViewToolbarButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNSplitViewToolbarButtonCell.m; sourceTree = "<group>"; };
+		A996D9B6175B64FB00010719 /* CNSplitViewToolbarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSplitViewToolbarDelegate.h; sourceTree = "<group>"; };
+		A996D9B7175B64FB00010719 /* NSView+CNSplitViewToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+CNSplitViewToolbar.h"; sourceTree = "<group>"; };
+		A996D9B8175B64FB00010719 /* NSView+CNSplitViewToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+CNSplitViewToolbar.m"; sourceTree = "<group>"; };
+		A996D9BF175B650E00010719 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +78,7 @@
 			files = (
 				A996D972175B59A900010719 /* Cocoa.framework in Frameworks */,
 				A996D992175B5D1600010719 /* Sparkle.framework in Frameworks */,
+				A996D9C1175B651700010719 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +105,7 @@
 		A996D970175B59A900010719 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A996D9BF175B650E00010719 /* QuartzCore.framework */,
 				A996D991175B5D1600010719 /* Sparkle.framework */,
 				A996D971175B59A900010719 /* Cocoa.framework */,
 				A996D973175B59A900010719 /* Other Frameworks */,
@@ -88,10 +126,9 @@
 		A996D977175B59A900010719 /* Pulsar */ = {
 			isa = PBXGroup;
 			children = (
-				A996D983175B59A900010719 /* MEDocument.h */,
-				A996D984175B59A900010719 /* MEDocument.m */,
-				A996D986175B59A900010719 /* MEDocument.xib */,
-				A996D989175B59A900010719 /* MainMenu.xib */,
+				A996D9AA175B64FB00010719 /* CNSplitView */,
+				A996D993175B62F000010719 /* User Interface */,
+				A996D994175B62FE00010719 /* Controllers */,
 				A996D978175B59A900010719 /* Supporting Files */,
 			);
 			path = Pulsar;
@@ -109,6 +146,45 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A996D993175B62F000010719 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				A996D986175B59A900010719 /* MEDocument.xib */,
+				A996D989175B59A900010719 /* MainMenu.xib */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		A996D994175B62FE00010719 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A996D983175B59A900010719 /* MEDocument.h */,
+				A996D984175B59A900010719 /* MEDocument.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A996D9AA175B64FB00010719 /* CNSplitView */ = {
+			isa = PBXGroup;
+			children = (
+				A996D9AB175B64FB00010719 /* CNSplitView.h */,
+				A996D9AC175B64FB00010719 /* CNSplitView.m */,
+				A996D9AD175B64FB00010719 /* CNSplitViewDefinitions.h */,
+				A996D9AE175B64FB00010719 /* CNSplitViewDraggingHandle.h */,
+				A996D9AF175B64FB00010719 /* CNSplitViewDraggingHandle.m */,
+				A996D9B0175B64FB00010719 /* CNSplitViewToolbar.h */,
+				A996D9B1175B64FB00010719 /* CNSplitViewToolbar.m */,
+				A996D9B2175B64FB00010719 /* CNSplitViewToolbarButton.h */,
+				A996D9B3175B64FB00010719 /* CNSplitViewToolbarButton.m */,
+				A996D9B4175B64FB00010719 /* CNSplitViewToolbarButtonCell.h */,
+				A996D9B5175B64FB00010719 /* CNSplitViewToolbarButtonCell.m */,
+				A996D9B6175B64FB00010719 /* CNSplitViewToolbarDelegate.h */,
+				A996D9B7175B64FB00010719 /* NSView+CNSplitViewToolbar.h */,
+				A996D9B8175B64FB00010719 /* NSView+CNSplitViewToolbar.m */,
+			);
+			path = CNSplitView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,6 +195,7 @@
 				A996D96A175B59A900010719 /* Sources */,
 				A996D96B175B59A900010719 /* Frameworks */,
 				A996D96C175B59A900010719 /* Resources */,
+				A996D9C3175B657300010719 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -177,6 +254,12 @@
 			files = (
 				A996D97E175B59A900010719 /* main.m in Sources */,
 				A996D985175B59A900010719 /* MEDocument.m in Sources */,
+				A996D9B9175B64FB00010719 /* CNSplitView.m in Sources */,
+				A996D9BA175B64FB00010719 /* CNSplitViewDraggingHandle.m in Sources */,
+				A996D9BB175B64FB00010719 /* CNSplitViewToolbar.m in Sources */,
+				A996D9BC175B64FB00010719 /* CNSplitViewToolbarButton.m in Sources */,
+				A996D9BD175B64FB00010719 /* CNSplitViewToolbarButtonCell.m in Sources */,
+				A996D9BE175B64FB00010719 /* NSView+CNSplitViewToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

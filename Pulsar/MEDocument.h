@@ -7,11 +7,17 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CNSplitView.h"
 
-@class CNSplitView;
 
-@interface MEDocument : NSDocument
+@interface MEDocument : NSDocument <NSOutlineViewDataSource, NSOutlineViewDelegate, NSSplitViewDelegate, CNSplitViewToolbarDelegate>
 
+@property NSXMLDocument *document;
+@property NSMutableDictionary *items;
+
+@property CNSplitViewToolbar *toolbar;
+
+@property (weak) IBOutlet NSView *contentView;
 @property (weak) IBOutlet CNSplitView *splitView;
 
 @end

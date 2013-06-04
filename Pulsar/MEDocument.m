@@ -7,16 +7,34 @@
 //
 
 #import "MEDocument.h"
+#import "LNSSourceListSourceGroupCell.h"
+
+
+#define kSnapToDelta			8.0
+#define	kMinSourceListWidth		110.0
+#define kSnapSourceListWidth	250.0
+#define kMinContentWidth		150.0
+
 
 @implementation MEDocument
-
-static NSUInteger attachedSubViewIndex = 0;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         // Add your subclass-specific initialization here.
+        _sourceList = [[NSMutableArray alloc] init];
+        
+        [_sourceList addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+								[NSNumber numberWithBool:YES], @"isSourceGroup",
+                                NSLocalizedString(@"Versions", "appcast application versions"), @"name",
+                                [NSArray arrayWithObjects:
+                                 [NSDictionary dictionaryWithObjectsAndKeys: @"Music", @"name", nil],
+                                 [NSDictionary dictionaryWithObjectsAndKeys: @"Movies", @"name", nil],
+								 [NSDictionary dictionaryWithObjectsAndKeys: @"TV Shows", @"name", nil],
+								 [NSDictionary dictionaryWithObjectsAndKeys: @"Podcasts", @"name", nil],
+                                 nil], @"children",
+                                nil]];
     }
     return self;
 }
@@ -31,19 +49,14 @@ static NSUInteger attachedSubViewIndex = 0;
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {
     [super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
+	
+	[_sourceListView setDelegate:self];
     
-    _toolbar = [[CNSplitViewToolbar alloc] init];
-    CNSplitViewToolbarButton *addVersionButton = [[CNSplitViewToolbarButton alloc] init];
-    addVersionButton.toolTip = @"Add another version";
-    addVersionButton.imageTemplate = CNSplitViewToolbarButtonImageTemplateAdd;
-    [_toolbar addItem:addVersionButton align:CNSplitViewToolbarItemAlignLeft];
-    
-    [_splitView setDelegate:self];
-    [_splitView setToolbarDelegate:self];
-    [_splitView attachToolbar:_toolbar toSubViewAtIndex:0 onEdge:CNSplitViewToolbarEdgeBottom];
-    
-    [_splitView showToolbarAnimated:YES];
+	//	Expand the group items...
+	for (id node in [[_sourceListController arrangedObjects] childNodes])
+		[_sourceListView expandItem:node];
+	//	Select the first item of the first group...
+	[_sourceListView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
 }
 
 + (BOOL)autosavesInPlace
@@ -76,41 +89,97 @@ static NSUInteger attachedSubViewIndex = 0;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMin ofSubviewAt:(NSInteger)dividerIndex
+#pragma mark - NSSplitView Delegate
+- (void) splitView:(NSSplitView*) splitView resizeSubviewsWithOldSize:(NSSize) oldSize
 {
-    return 180;
+	if (splitView == _splitView)
+	{
+		CGFloat dividerPos = NSWidth([[[splitView subviews] objectAtIndex:0] frame]);
+		CGFloat width = NSWidth([splitView frame]);
+        
+		if (dividerPos < kMinSourceListWidth)
+			dividerPos = kMinSourceListWidth;
+		if (width - dividerPos < kMinContentWidth + [splitView dividerThickness])
+			dividerPos = width - (kMinContentWidth + [splitView dividerThickness]);
+		
+		[splitView adjustSubviews];
+		[splitView setPosition:dividerPos ofDividerAtIndex:0];
+	}
 }
 
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMax ofSubviewAt:(NSInteger)dividerIndex
+- (CGFloat) splitView:(NSSplitView*) splitView constrainSplitPosition:(CGFloat) proposedPosition ofSubviewAt:(NSInteger) dividerIndex
 {
-    return [_contentView bounds].size.width - 180;
+	if (splitView == _splitView)
+	{
+		CGFloat width = NSWidth([splitView frame]);
+		
+		if (ABS(kSnapSourceListWidth - proposedPosition) <= kSnapToDelta)
+			proposedPosition = kSnapSourceListWidth;
+		if (proposedPosition < kMinSourceListWidth)
+			proposedPosition = kMinSourceListWidth;
+		if (width - proposedPosition < kMinContentWidth + [splitView dividerThickness])
+			proposedPosition = width - (kMinContentWidth + [splitView dividerThickness]);
+	}
+	
+	return proposedPosition;
 }
 
-#pragma mark - CNSplitViewToolbar Delegate
 
-- (NSUInteger)toolbarAttachedSubviewIndex:(CNSplitViewToolbar *)theToolbar
+#pragma mark - NSOutlineView Delegate
+//	Method to determine if an outline item is a source group
+- (BOOL) isSourceGroupItem:(id) item
 {
-    return attachedSubViewIndex;
+	return [[[item representedObject] objectForKey:@"isSourceGroup"] boolValue];
 }
 
-- (void)splitView:(CNSplitView *)theSplitView willShowToolbar:(CNSplitViewToolbar *)theToolbar onEdge:(CNSplitViewToolbarEdge)theEdge
+//	NSOutlineView delegate methods
+//
+//	Do the minimum to implement a iTunes/Finder inspired source list outline.
+//
+//	The combination of NSTableView's new setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList
+//	property and -outlineView:isGroupItem: delegate method do a lot of the work for us.  However, there are still
+//	a few cosmetic and functional overrides needed to fully mimic the Finder's source list.
+//
+//	Note that LNSSourceListSourceGroupCell further customizes the appearance of Source List group items to mimic
+//	the Finder.  LNSSourceListSourceGroupCell is *a lot* simpler in this verison that my previous SopurceList
+//	implementation.
+
+- (BOOL) outlineView:(NSOutlineView*) outlineView shouldShowOutlineCellForItem:(id) item
 {
-    NSLog(@"splitView:willShowToolbar:onEdge:");
+	//	Don't show the expander triangle for group items...
+	return ![self isSourceGroupItem:item];
 }
 
-- (void)splitView:(CNSplitView *)theSplitView didShowToolbar:(CNSplitViewToolbar *)theToolbar onEdge:(CNSplitViewToolbarEdge)theEdge
+- (BOOL)outlineView:(NSOutlineView*) outlineView isGroupItem:(id) item
 {
-    NSLog(@"splitView:didShowToolbar:onEdge:");
+	return [self isSourceGroupItem:item];
 }
 
-- (void)splitView:(CNSplitView *)theSplitView willHideToolbar:(CNSplitViewToolbar *)theToolbar onEdge:(CNSplitViewToolbarEdge)theEdge
+- (void) outlineView:(NSOutlineView*) outlineView willDisplayCell:(id) cell forTableColumn:(NSTableColumn*) tableColumn item:(id) item
 {
-    NSLog(@"splitView:willHideToolbar:onEdge:");
+	if ([self isSourceGroupItem:item])
+		[cell setTitle:[[cell title] uppercaseString]];
 }
 
-- (void)splitView:(CNSplitView *)theSplitView didHideToolbar:(CNSplitViewToolbar *)theToolbar onEdge:(CNSplitViewToolbarEdge)theEdge
+- (NSCell*) outlineView:(NSOutlineView*) outlineView dataCellForTableColumn:(NSTableColumn*) tableColumn item:(id) item
 {
-    NSLog(@"splitView:didHideToolbar:onEdge:");
+	if ([self isSourceGroupItem:item])
+		return [[LNSSourceListSourceGroupCell alloc] init];
+	else
+		return [tableColumn dataCell];
+}
+
+- (BOOL) outlineView:(NSOutlineView*) outlineView shouldSelectItem:(id) item
+{
+	return ![self isSourceGroupItem:item];
+}
+
+- (CGFloat)outlineView:(NSOutlineView*) outlineView heightOfRowByItem:(id) item
+{
+	//	Make the height of Source Group items a little higher
+	if ([self isSourceGroupItem:item])
+		return [outlineView rowHeight] + 5.0;
+	return [outlineView rowHeight];
 }
 
 @end
